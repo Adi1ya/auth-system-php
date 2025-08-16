@@ -2,7 +2,7 @@
 RewriteEngine On
 
 # Adjust base if project is in subfolder (e.g., /myproject/)
-RewriteBase /core_php_auth/
+RewriteBase /auth-system-php/
 
 # -------------------------------------
 # 🔐 Security rules

@@ -7,7 +7,7 @@ error_reporting(E_ALL); // better than (1), set to 0 in production
 
 // Simple router based on ?page=...
 $page = $_GET['page'] ?? 'login';
-// var_dump($page);die;
+var_dump($page);die;
 switch ($page) {
     case 'auth':
         require __DIR__ . "/controllers/auth.php";
