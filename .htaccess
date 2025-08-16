@@ -1,0 +1,38 @@
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Adjust base if project is in subfolder (e.g., /myproject/)
+RewriteBase /core_php_auth/
+
+# -------------------------------------
+# 🔐 Security rules
+# -------------------------------------
+
+# Deny access to config, logs, and other sensitive folders
+RedirectMatch 403 ^/config
+RedirectMatch 403 ^/logs
+RedirectMatch 403 ^/uploads/private
+
+# Prevent direct access to .env, .git, composer files, etc.
+<FilesMatch "^(\.env|\.git|composer\.json|composer\.lock|package\.json|webpack\.config\.js)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# -------------------------------------
+# 🌐 URL rewriting rules
+# -------------------------------------
+
+# If the requested file or folder exists, serve it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Otherwise, route everything to index.php and pass it as ?page=
+RewriteRule ^(.*)$ index.php?page=$1 [L,QSA]
+
+# -------------------------------------
+# ⚠️ Custom error handling
+# -------------------------------------
+
+# Use custom 404 page
+ErrorDocument 404 /views/404.php
