@@ -1,3 +1,3 @@
 <?php
 
-define("BASE_URL", "/core_php_auth/");
+define("BASE_URL", "/auth-system-php/");
