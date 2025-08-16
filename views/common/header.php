@@ -16,7 +16,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <header class="navbar">
   <div class="logo">MyApp 🚀</div>
   <nav>
-    <?php if (!isset($_SESSION['user'])): ?>
+    <?php if (!isset($_SESSION['userId'])): ?>
       <a href="<?= BASE_URL ?>login">Login</a>
       <a href="<?= BASE_URL ?>signup">Sign Up</a>
     <?php else: ?>
